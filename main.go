@@ -1,16 +1,15 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/heidimitre/priceProject/item"
+	"time"
+	"os"
 )
 
 func main(){
 
-	tempURL:= ""
+	tempURL:= os.Getenv("TARGET")
 
-	item:= item.CreateItem("Exploding Kittens", tempURL)
-	item.AddPrice()
-	fmt.Println(item.Description, item.Pricelist[0].Value)
+	item.CreateItem("Exploding Kittens", tempURL)
+	time.Sleep(5*time.Minute)
 }

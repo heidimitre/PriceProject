@@ -3,6 +3,9 @@ package item
 import (
 	"github.com/heidimitre/priceProject/price"
 	"github.com/heidimitre/priceProject/updater"
+
+	"time"
+	"github.com/davecgh/go-spew/spew"
 )
 
 type Item struct {
@@ -16,6 +19,13 @@ func CreateItem (desc string, url string)(item *Item){
 	newItem.Pricelist = []*price.Price{}
 	newItem.Description = desc
 	newItem.Url = url
+	go func () {
+		for true {
+			newItem.AddPrice()
+			spew.Dump(newItem)
+			time.Sleep(30*time.Second)
+		}
+	}()
 	return newItem
 }
 
