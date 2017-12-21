@@ -4,14 +4,13 @@ import (
 	"fmt"
 
 	"github.com/heidimitre/priceProject/item"
-	"github.com/heidimitre/priceProject/updater"
 )
 
 func main(){
 
 	tempURL:= ""
 
-	price:= updater.GetCurrentPrice(tempURL)
-	item:= item.CreateItem(price, "Exploding Kittens", tempURL)
-	fmt.Println(item.Description, item.Price)
+	item:= item.CreateItem("Exploding Kittens", tempURL)
+	item.AddPrice()
+	fmt.Println(item.Description, item.Pricelist[0].Value)
 }
